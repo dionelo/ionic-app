@@ -1,0 +1,7 @@
+{
+  "name": "appre",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
