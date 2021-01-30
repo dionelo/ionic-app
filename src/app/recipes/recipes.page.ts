@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { RecipesService } from './recipes.service';
 
 @Component({
 	selector: 'app-recipes',
@@ -7,23 +8,11 @@ import { Recipe } from './recipe.model';
 	styleUrls: ['./recipes.page.scss'],
 })
 export class RecipesPage implements OnInit {
-	recipes: Recipe[] = [
-		{
-			id: 'r1',
-			title: 'Milanesa Napolitana con Fritas',
-			imageUrl: 'https://static-agr.clickonar.com/205944/5da9b5db701c6sl.jpg',
-			ingredients: ['Carne de ternera', 'Papas', 'Tomates', 'Mozzarella'],
-		},
-		{
-			id: 'r2',
-			title: 'Sorrentinos de Jamon y Queso',
-			imageUrl:
-				'https://cocinerosargentinos.com/content/recipes/500x500/sorrentinos-de-jamon-y-queso-con-estofado-de-paleta.6077.jpg',
-			ingredients: ['Jamon Cocido', 'Mozzarella', 'Harina', 'Huevo'],
-		},
-	];
+	recipes: Recipe[];
 
-	constructor() {}
+	constructor(private recipesService: RecipesService) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.recipes = this.recipesService.getAllRecipes();
+	}
 }
